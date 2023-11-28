@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html style="height: 100%;">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HOME</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            background-color: green;
+            height: 100%; /* To hide any overflow */
+            overflow: hidden;
+        }
+        .mainnav {
+            width: 50px;
+            flex: 0 0 4.6%;
+            background-color: #343a40;
+            display: flex;
+            flex-direction: column;
+            height: 919px;
+        }
+        .mainframe {
+            flex: 0 0 95.4%;
+            background-color: #e9ecef;
+
+            overflow-y: auto;
+            position: relative;
+            box-shadow: -1.5px 0 5px rgba(0, 0, 0, 0.5);
+            flex-direction: column;
+            align-items: center;
+            min-height: 100%;
+        }
+        .mainnav .logo{
+            width: 40px;
+            height: 40px;
+            margin-top: 23px;
+            display: flex;
+            left: 20px;
+            position: fixed;
+            align-items: center;
+            cursor: pointer;
+            transform-origin: center;
+        }
+        @keyframes spinnyboi{
+            0%{
+                transform: rotate(0deg);
+            }100%{
+                transform: rotate(360deg);
+            }
+        }
+        .mainnav .name{
+            width: 170px;
+            height: 50px;
+            margin-top: 20px;
+            margin-left: -17px;
+            display: none;
+            transform: translateX(40%);
+            position: fixed;
+            transition: 0.3s ease;
+
+        }        
+        .mainnav .options{
+            transform: translateX(-26%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 120px;
+            height: 300px;
+            margin-bottom: 300px;
+            margin-top: 200px;
+        }
+
+        .mainnav .options a{
+            width: 30px;
+            height: 30px;
+            background-color: #343a40;
+            padding: 13px;
+            border-radius: 50%;
+            overflow: hidden;
+            align-items: center;
+            margin-bottom: 5px;
+            transform: translateX(23%);
+            transition: 0.2s ease;
+            display: flex;
+            text-decoration: none;
+        }
+        .mainnav .options a span{
+            margin-left: 20px;
+            margin-top: 5px;
+            color: whitesmoke;
+            font-family: Tahoma;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .mainnav .options a:hover{
+            background-color: #212529;
+            box-shadow: -0.1px 0 1px rgba(0, 0, 0, 0.5);
+            transition: 0.01s ease;
+        }
+        .mainnav .options a:hover img{
+            animation: rotateImage 0.3s linear forwards;
+        }
+        @keyframes rotateImage{
+            from{
+                transform: rotate(0deg);
+            }
+            to{
+                transform: rotate(360deg);
+            }
+        }
+        .mainnav .homeimg{
+            width: 24px;
+            height: 24px;
+            margin-left: 2.5px;
+            transition: 0.3s;
+            transform-origin: center;
+        }
+        .mainnav .logout{
+            width: 30px;
+            height: 30px;
+            transform: translateX(35%);
+            margin-bottom: 28px;
+            padding: 10px;
+            border-radius: 10px;
+            transition: 0.2s ease;
+            display: flex;
+            border: 2px solid #9b1003;
+            text-decoration: none;
+        }
+        .mainnav .logout:hover{
+            background-color: #9b1003;
+            box-shadow: -2px 0 8px rgb(178,59,59, 0.6);
+        }
+        .mainnav .logout img{
+            width: 24px;
+            height: 24px;
+            transform: translate(17%, 10%);
+        }
+        .mainnav .logout span{
+            margin-left: 20px;
+            margin-top: 6px;
+            color: whitesmoke;
+            font-family: Tahoma;
+            text-decoration: none;
+            display: none;
+        }
+        .mainframe .course-n-streak{
+            display: flex;
+            flex-direction: row;
+            width: 90%;
+            height: 400px;
+            margin-top: 2%;
+            margin-left: 20px;
+        }
+        .mainframe .course-n-streak .started-courses{
+            width: 70%;
+            height: 100%;
+            border: 1px solid ghostwhite;
+            border-radius: 4px;
+            margin-right: 40px;
+            background-color: #f6fafe;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .mainframe .course-n-streak .started-courses h1{
+            font-family:  Verdana, sans-serif;
+            letter-spacing: 1px;
+            font-weight: 20;
+            color: #6c757d;
+            font-size: 17px;
+            margin-top: 10px;
+            margin-left: 12px;
+            width: 500px;
+            height: 45px;
+        }
+        .mainframe .course-n-streak .started-courses .activity-head hr{
+            opacity: 0.3;
+            border-left: 0;
+            border-right: 0;
+            border-bottom: 0; 
+            margin-top: -12px;           
+        }
+        .mainframe .course-n-streak .streak {
+            width: 30%;
+            height: 100%;
+            border-radius: 4px;
+            margin-right: 0px;
+            display: flex;
+            flex-direction: column;
+        }
+        .mainframe .stats{
+            width: 90%;
+            height: 140px;
+            border-radius: 20px;
+            margin-top: 30px;
+            margin-left: 20px;
+        }
+        .mainframe .dashNav{
+            height: 75px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .mainframe .dashNav #dbsearch{
+            height: 41px;
+            width: 370px;
+            margin-left: 40px;
+            font-size: 16px;
+            transition: .2s;
+            border: none;
+            outline: none;
+            background-color: #f6fafe;
+            padding: 0 22px;
+            border-radius: 25px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+        .mainframe .dashNav .guy-info{
+            width: 220px;
+            height: 50%;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+        }
+        .mainframe .dashNav .guy-info a{
+            margin-left: 20px;
+            text-decoration: none;
+            font-size: 20px;
+            color: black;
+            display: flex;
+            align-items: center;
+        }
+        .mainframe .dashNav .guy-info #prof-icon{
+            width: 65px;
+            height: 37px;
+            border-radius: 4px;
+            border: 0.5px solid rgba(108, 117, 125, 0.1);
+            background-color: rgba(52, 58, 64, 0.05);
+            transition: 0.3s;
+        }
+        .mainframe .dashNav .guy-info #prof-icon:hover{
+            background-color: rgba(52, 58, 64, 0.1);;
+        }
+        .mainframe .dashNav .guy-info #notif img{
+            width: 25px;
+            height: 25px;
+            opacity: 0.7;
+            transition: 0.3;
+        }
+        .mainframe .dashNav .guy-info #notif:hover img{
+            opacity: 1;
+        }
+        .mainframe .dashNav .guy-info #prof-icon .arrow-img{
+            width: 11px;
+            height: 11px;
+            margin-left: 7px;
+            opacity: 0.5;
+        }
+        .mainframe .dashNav .guy-info #prof-icon .prof-img{
+            width: 32px;
+            height: 32px;
+            margin-left: 5px;
+        }
+        .mainframe .course-n-streak .started-courses .chart{
+            width: 680px;
+            height: 320px;
+            margin-left: 40px;
+            margin-top: 26px;
+        }
+        .mainframe .course-n-streak .streak .histdata{
+            width: 100%;
+            flex: 0 0 68%;
+            background-color: #f6fafe;
+            border-radius: 4px;
+            border: 1px solid ghostwhite;
+            display: flex;
+            flex-direction: row;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .mainframe .course-n-streak .streak .histdata .hist-info{
+            width: 200px;
+            height: 250px;
+            align-self: center;
+            margin-left: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-right: 20px;
+        }
+        #progress-head{
+            align-self: center;
+            transform: translateY(-20px);
+            font-size: 17px;
+            font-family:  Verdana, sans-serif;
+            color: #6c757d;
+            font-weight: 20;
+        }
+        .mainframe .course-n-streak .streak .histdata .hist-info strong{
+            margin-top: 3px;
+            font-size: 15px;
+            font-family: Arial Narrow, sans-serif;
+            height: 23px;
+            letter-spacing: 0.3px;
+            transform: translateY(30px);
+        }
+        .mainframe .course-n-streak .streak .histdata .hist-info hr{
+            opacity: 0.3;
+            border-left: 0;
+            border-right: 0;
+            background-color: green;
+            width: 100%;
+            height: 0.2px;
+            transform: translateY(-7px);
+        }
+        #red{
+            color: rgb(255, 99, 132);
+            transform: translateY(20px);   
+        }
+        #yellow{
+            color: rgb(54, 162, 235);
+            transform: translateY(20px);   
+        }
+        #blue{
+            color: rgb(255, 205, 86);
+            transform: translateY(20px);   
+        }
+        #view-course{
+            margin-top: 3px;
+            font-size: 15px;
+            transform: translateY(42px);
+            font-family: Arial Narrow, sans-serif;
+            height: 23px;
+            letter-spacing: 0.3px;
+            text-decoration: none;
+            font-size: 15px;
+            color: #008080;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 0px;
+            border: 0.5px solid #008080;
+            border-radius: 2px;
+            transition: 0.2s ease;
+        }
+        #view-course:hover{
+            background-color: #008080;
+            color: whitesmoke;
+        }
+        .mainframe .course-n-streak .streak .histdata .histogram{
+            width: 220px;
+            height: 220px;
+            margin-top: 25px;
+            margin-left: 20px;
+        }
+        .mainframe .course-n-streak .streak .achievements{
+            flex: 0 0 30%;
+            width: 100%;
+            background-color: #e9ecef;
+            margin-top: 10px;
+            border-radius: 1px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        .badges{
+            flex: 0 0 52%;
+            height: 90%;
+            background: linear-gradient(to right, #FF2768, #FF405B);
+            margin-left: 10px;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: row;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .strk{
+            flex: 0 0 42%;
+            height: 90%;
+            background: linear-gradient(to right, #3FBEE0, #66D9EF);
+            margin-left: 10px;
+            border-radius: 9px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #bd1{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 23px;
+            letter-spacing: 0.7px;
+            margin-left: 5.5%;
+            margin-top: 8%;
+            width: 90px;
+            height: 50px;
+        }
+        #bd2{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 44px;
+            letter-spacing: 0.7px;
+            margin-left: -10px;
+        }
+        .bdg-txt{
+            display: flex;
+            flex-direction: column;
+            margin-left: 10px;
+            align-items: center;
+        }
+        .act-bdg{
+            width: 80px;
+            height: 70px;
+            background: linear-gradient(45deg, #3498db, #8e44ad);
+            margin-left: 29px;
+            margin-top: 7%;
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            border-bottom-left-radius: 50%;
+            border-bottom-right-radius: 50%;   
+            display: flex;         
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .act-bdg img{
+            width: 70px;
+            height: 70px;
+            margin-right: 5%;
+        }
+        #strk-txt{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 21px;
+            letter-spacing: 0.7px;
+            margin-left: 5.5%;
+            margin-top: 3.5%;
+            width: 70px;
+            height: 25px;
+        }
+        .strk-thing{
+            height: 60px;
+            display: flex;
+            width: 90px;
+            align-self: center;
+        }
+        .strk-thing strong{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 44px;
+            letter-spacing: 0.7px;       
+        }
+        .strk-thing img{
+            width: 50px;
+            height: 50px;
+        }
+        .activity-head{
+            height: 30px;
+            margin-bottom: 5px;
+        }
+        .activity-stuff{
+            height: 380px;
+            display: flex;
+            flex-direction: row;
+        }
+        #free{
+            width: 250px;
+            height: 125px;
+            background: linear-gradient(to right, rgba(103, 114, 157, 1), rgba(133, 163, 210, 1));
+            margin-top: 32px;
+            margin-left: 10px;
+            margin-right: 20px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+        }
+        #free-tag{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 30px;
+            letter-spacing: 1px;
+            width: 80px;
+            height: 35px;
+            margin-left: 15px;
+            margin-top: 10px;
+        }
+        #prem-tag{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 30px;
+            letter-spacing: 1px;
+            width: 80px;
+            height: 35px;
+            margin-left: 12px;
+            margin-top: 10px;
+        }        
+        #free h1{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 15px;
+            width: 190px;
+            height: 20px;
+            margin-top: -5px;
+            margin-left: 14px;
+        }
+        #free img{
+            width: 50px;
+            height: 50px;
+            transform: translate(175px, -100px);
+        }
+        #purchased img{
+            width: 45px;
+            height: 45px;
+            transform: translate(175px, -100px);
+        }
+        #free-cnt{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 51px;
+            margin-top: 2px;
+            margin-left: 30px;
+            width: 50px;        
+            height: 50px;
+        }
+        #prem-cnt{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 51px;
+            margin-top: 2px;
+            margin-left: 30px;
+            width: 50px;        
+            height: 50px;
+        }        
+        #purchased{
+            width: 250px;
+            height: 125px;
+            background: linear-gradient(to right, #FFB000, #FFD76E);
+            margin-top: 30px;
+            margin-left: 10px;
+            margin-right: 20px;
+            margin-bottom: 33px;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+        }
+        #purchased h1{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 15px;
+            width: 190px;
+            height: 20px;
+            margin-top: -5px;
+            margin-left: 14px;          
+        }
+        #purchased a{
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            align-self: center;
+            margin-top: -55px;
+            margin-left: 50%;
+            color: black;
+        }
+        #free a{
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            align-self: center;
+            margin-top: -59px;
+            margin-left: 50%;
+            color: black;
+        }
+        .course-ana{
+            display: flex;
+            flex-direction: column;
+            margin-left: 25px;
+            margin-right: 40px;
+            margin-top: 10px;
+        }
+        .dashboard-thing{
+            height: auto;
+            align-items: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .stats{
+            display: flex;
+            flex-direction: row;
+        }
+        .stats div{
+            margin-left: 38px;
+            border-radius: 2px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+        }
+        #card-head{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 22px;
+            font-weight: 2;
+            letter-spacing: 1px;
+            width: 200px;
+            height: 27px;
+            margin-left: 9px;
+            margin-top: 5px;
+        }
+        #card-detail{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 14px;
+            font-weight: 1;
+            width: 200px;
+            height: 20px;
+            margin-top: 0px;
+            margin-left: 12px;            
+        }
+        #no{
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            font-size: 51px;
+            margin-top: 5px;
+            margin-left: 17%;
+            width: 250px;        
+            height: 50px;
+            align-self: center;           
+        }
+        #no-sub{
+            font-size: 34px;
+            font-weight: 1;
+            margin-left: -2px;
+            Font-family: Segoe UI, Frutiger, Dejavu Sans, Helvetica Neue, Arial, sans-serif;
+        }
+        .card1{
+            background: linear-gradient(to right, rgb(236, 64, 122), rgb(255, 173, 196));
+            flex: 0 0 22%;
+        }        
+        .card2{
+            background: linear-gradient(to right, #29c0b1, #8ee6e0);
+            flex: 0 0 22%;
+        }
+        .card3{
+            background: linear-gradient(to right, #222437, #7d5bbe);
+            flex: 0 0 22%;
+        }
+        .card4{
+            background: linear-gradient(to right, rgb(156, 39, 176), rgb(206, 147, 216));
+            flex: 0 0 22%;
+        }
+        .prof-menu{
+            position: absolute;
+            width: 290px;
+            height: 500px;
+            background-color: #f6fafe;
+            margin-left: -80px;
+            margin-top: 580px;
+            transform: translateY(-30px);
+            z-index: 2;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+            border-radius: 5px;
+            display: none;
+            flex-direction: column;
+            transition: 0.5s ease;
+        }
+        .prof-menu img{
+            width: 75px;
+            height: 75px;
+            align-self: center;
+            margin-left: 15px;
+        }
+        .prof-menu strong{
+            height: 26px;
+            color: whitesmoke;
+            font-family: Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, sans-serif;
+            align-self: center;
+            margin-left: 12px;
+            font-size: 20px;
+            margin-top: -10px;
+        }
+        .prof-menu strong h1{
+            font-size: 14px;
+            transform: translateX(50px);
+            font-weight: 1;
+
+        }
+        .prof-menu strong img{
+            width: 13px;
+            height: 13px;
+            transform: translate(15px, -30px);
+        }
+        .prof-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .prof-start{
+            background-color: #009efb;
+            height: 120px;
+            display: flex;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="mainnav">
+            <img class="logo" src="{{ url_for('static', filename='images/logo.png') }}">
+            <img class="name" src="{{ url_for('static', filename='images/name.png') }}">
+            
+            <div class="options">
+                <a href="#" class="a1">
+                    <img class="homeimg" src="{{ url_for('static', filename='images/dashboard.png') }}">
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="a2">
+                    <img class="homeimg2" src="{{ url_for('static', filename='images/finance.png') }}">
+                    <span>Finance</span>
+                </a>
+                <a href="#" class="a3">
+                    <img class="homeimg3" src="{{ url_for('static', filename='images/pro.png') }}">
+                    <span>Membership</span>
+                </a>
+                <a href="#" class="a4">
+                    <img class="homeimg4" src="{{ url_for('static', filename='images/about.png') }}">
+                    <span>About</span>
+                </a>
+                
+            </div>
+            <a href="#" class="logout">
+                <img class="logou" src="{{ url_for('static', filename='images/logout.png') }}">
+                <span>LogOut</span>
+            </a>
+                      
+        </nav>
+        <div class="mainframe">
+            <nav class="dashNav">
+                <input type="search course" name="search" id="dbsearch" placeholder="Search courses..">
+                <div class="prof-container">
+                    <div class="guy-info">
+                        <a href="#" id="notif">
+                            <img class="notif-img" src="{{ url_for('static', filename='images/notification.png') }}">
+                        </a>
+                        <a href="#" id="prof-icon" class="prof-icon">
+                            <img class="prof-img" src="{{ url_for('static', filename='images/profileIcon2.png') }}">
+                            <img class="arrow-img" src="{{ url_for('static', filename='images/arrow.png') }}">
+                        </a>
+                    </div>
+                    <div class="prof-menu">
+                        <div class="prof-start"> 
+                            <img class="notif-img" src="{{ url_for('static', filename='images/profileIcon2.png') }}">
+                            <strong>Pratyaksh Parashar
+                                <h1>Online</h1>
+                                <img class="notif-img" src="{{ url_for('static', filename='images/green.png') }}">
+                            </strong>
+                        </div>                            
+                    </div>
+                </div>
+            </nav>
+            <div class="dashboard-thing">
+                <div class="stats">
+                        <div class="card1">
+                            <strong id="card-head">Total Time</strong>
+                            <h1 id="card-detail">Total time spent on yeetcode</h1>
+                            <strong id="no">30 <strong id="no-sub">Hours</strong></strong>
+                        </div>
+                        <div class="card2">
+                            <strong id="card-head">Total Time</strong>
+                            <h1 id="card-detail">Total time spent on the site</h1>
+                            <strong id="no">30 <strong id="no-sub">Hours</strong></strong>
+                        </div>
+                        <div class="card3">
+                            <strong id="card-head">Total Time</strong>
+                            <h1 id="card-detail">Total time spent on the site</h1>
+                            <strong id="no">30 <strong id="no-sub">Hours</strong></strong>
+                        </div>
+                        <div class="card4">
+                            <strong id="card-head">Total Time</strong>
+                            <h1 id="card-detail">Total time spent on the site</h1>
+                            <strong id="no">30 <strong id="no-sub">Hours</strong></strong>
+                        </div>
+                </div>                
+                <div class="course-n-streak">
+                    <div class="started-courses">
+                        <div class="activity-head">
+                            <h1>Your activity</h1>
+                            <hr>
+                        </div>
+                        <div class="activity-stuff">
+                            <div class="chart">
+                                <canvas id="myChart"></canvas>
+                            </div>
+                            <div class="course-ana">
+                                <div id="free">
+                                    <strong id="free-tag">FREE</strong>
+                                    <h1>courses in library</h1>
+                                    <strong id="free-cnt">10</strong>
+                                    <img class="arrow-img" src="{{ url_for('static', filename='images/free.png') }}">
+                                    <a href="#">View library</a>
+                                </div>
+                                <div id="purchased">
+                                    <strong id="prem-tag">PREMIUM</strong>
+                                    <h1>courses in library</h1>
+                                    <strong id="prem-cnt">07</strong>
+                                    <img class="arrow-img" src="{{ url_for('static', filename='images/premium.png') }}">
+                                    <a href="#">View library</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="streak">
+                        <div class="histdata">
+                            <div class="histogram">
+                                <canvas id="myChart2"></canvas>
+                            </div>
+                            <div class="hist-info">
+                                <strong id="progress-head">Progress</strong>
+                                <hr>
+                                <strong id="red">Started courses:  30</strong>
+                                <strong id="yellow">Courses in progress:  19</strong>
+                                <strong id="blue">Completed courses:  5</strong>
+                                <a href="#" id="view-course">View other courses</a>
+                            </div>
+                        </div>
+                        <div class="achievements">
+                            <div class="badges">
+                                <div class="bdg-txt">
+                                    <strong id="bd1">Badges</strong>
+                                    <strong id="bd2">1</strong>
+                                </div>
+                                <div class="act-bdg">
+                                    <img class="arrow-img" src="{{ url_for('static', filename='images/badge1.png') }}">
+                                </div>
+                            </div>
+                            <div class="strk">
+                                <strong id="strk-txt">Streak</strong>
+                                <div class="strk-thing">
+                                    <img class="arrow-img" src="{{ url_for('static', filename='images/fire.png') }}">
+                                    <strong>9</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    window.onload = function() {
+        const ctx = document.getElementById('myChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: ['January', 'Feburary', 'March', 'April', 'May', 'June', 'July'],
+                datasets: [{
+                    label: 'Hours spent',
+                    data: [65, 59, 80, 81, 56, 55, 40],
+                    fill: true,
+                    borderColor: 'rgb(75, 192, 192)',
+                    backgroundColor: 'rgba(75, 192, 192, 0.05)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        grid: {
+                            display: false
+                        }
+                    },
+                    y: {
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            }
+        });
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        new Chart(ctx2, {
+            type: 'doughnut',
+            data: {
+                  labels: [
+                    'Started',
+                    'Completed',
+                    'In progress'
+                  ],
+                  datasets: [{
+                    label: 'My First Dataset',
+                    data: [300, 50, 100],
+                    backgroundColor: [
+                      'rgb(255, 99, 132)',
+                      'rgb(54, 162, 235)',
+                      'rgb(255, 205, 86)'
+                    ],
+                    hoverOffset: 4
+                  }]
+            },
+        });           
+        var logoff_span = document.querySelector('.mainnav .logout span');
+        var logoff = document.querySelector('.logout');
+        var anc = document.querySelector('.a1');
+        var anc2 = document.querySelector('.a2');
+        var anc3 = document.querySelector('.a3');
+        var anc4 = document.querySelector('.a4');
+        var mainNav = document.querySelector('.mainnav');
+        var mainFrame = document.querySelector('.mainframe');
+        var name = document.querySelector(".mainnav .name");
+        var logo = document.querySelector(".mainnav .logo");
+        
+        var profile_icon = document.querySelector(".prof-icon");
+        var menu_box = document.querySelector(".prof-menu");
+
+        profile_icon.addEventListener('click', function(event) {
+            // Toggle the menu box visibility when the profile icon is clicked
+            menu_box.style.display = (menu_box.style.display === "none" || menu_box.style.display === "") ? "flex" : "none";
+            menu_box.style.marginTop = "580px";
+        });
+
+        document.addEventListener('click', function(event) {
+            // Close the menu box if it's open and the click is outside of the profile icon and menu box
+            if (menu_box.style.display === "flex" && !event.target.closest('.prof-icon') && !event.target.closest('.prof-menu')) {
+                menu_box.style.display = "none";
+            }
+        });
+        logo.addEventListener('click', function(event) {
+            logo.style.animation = "spinnyboi 0.3s linear forwards";
+            if (mainNav.style.flex != "0 0 12.4%") {        
+                mainNav.style.transition = "flex 0.3s"; // Add a transition effect
+                mainNav.style.flex = "0 0 12.4%"; // Change the width to 20%
+                mainFrame.style.flex = "0 0 87.6%";
+                event.stopPropagation(); // Prevent the click from propagating to the document
+                mainFrame.style.borderRadius = 0;
+                mainFrame.style.transition = "0.3s";
+                anc.style.borderRadius = 0;
+                anc.style.width = "150px"
+                anc.style.padding = "13px 50px";
+                anc.style.transition = "0.3s ease";
+                anc.style.transform = "translateX(80px)";
+                anc.style.borderRadius = "10px";
+                anc2.style.borderRadius = 0;
+                anc2.style.width = "150px"
+                anc2.style.padding = "13px 50px";
+                anc2.style.transition = "0.3s ease";
+                anc2.style.transform = "translateX(80px)";
+                anc2.style.borderRadius = "10px";
+                anc3.style.borderRadius = 0;
+                anc3.style.width = "150px"
+                anc3.style.padding = "13px 50px";
+                anc3.style.transition = "0.3s ease";
+                anc3.style.transform = "translateX(80px)";
+                anc3.style.borderRadius = "10px";
+                anc4.style.borderRadius = 0;
+                anc4.style.width = "150px"
+                anc4.style.padding = "13px 50px";
+                anc4.style.transition = "0.3s ease";
+                anc4.style.transform = "translateX(80px)";                                    
+                anc4.style.borderRadius = "10px";
+                logoff.style.width = "100px";
+                logoff_span.style.display = "block";
+                logoff_span.style.transition = "0.3s ease";
+                name.style.display = "block";
+                name.style.transition = "0.3s ease";
+                logo.style.transition = "none";
+                
+            }else{
+                logo.style.animation = "rotateImage 0.3s linear";
+                mainNav.style.transition = "flex 0.3s"; // Add a transition effect
+                mainNav.style.flex = "0 0 4.6%"; // Reset the width to the original size
+                mainFrame.style.flex = "0 0 95.4%";
+                mainFrame.style.transition = "0.3s";
+                anc.style.borderRadius = "50%";
+                anc.style.width = "30px"
+                anc.style.padding = "13px";
+                anc.style.transform = "translateX(25%)";
+                anc.style.transition = "0.3s";
+                anc2.style.borderRadius = "50%";
+                anc2.style.width = "30px"
+                anc2.style.padding = "13px";
+                anc2.style.transform = "translateX(25%)";
+                anc2.style.transition = "0.3s";
+                anc3.style.borderRadius = "50%";
+                anc3.style.width = "30px"
+                anc3.style.padding = "13px";
+                anc3.style.transform = "translateX(25%)";
+                anc3.style.transition = "0.3s";
+                anc4.style.borderRadius = "50%";
+                anc4.style.width = "30px"
+                anc4.style.padding = "13px";
+                anc4.style.transform = "translateX(25%)";
+                anc4.style.transition = "0.3s";                                                
+                logoff.style.width = "30px";
+                logoff_span.style.display = "none";
+                name.style.display = "none";
+                name.style.transition = "0.3s ease";
+                logo.style.transition = "none";
+                }
+            });
+        document.addEventListener('click', function(event) {
+            if (!event.target.closest('.mainnav')) {
+                logo.style.animation = "rotateImage 0.3s linear";
+                mainNav.style.transition = "flex 0.3s"; // Add a transition effect
+                mainNav.style.flex = "0 0 4.6%"; // Reset the width to the original size
+                mainFrame.style.flex = "0 0 95.4%";
+                mainFrame.style.transition = "0.3s";
+                anc.style.borderRadius = "50%";
+                anc.style.width = "30px"
+                anc.style.padding = "13px";
+                anc.style.transform = "translateX(25%)";
+                anc.style.transition = "0.3s";
+                anc2.style.borderRadius = "50%";
+                anc2.style.width = "30px"
+                anc2.style.padding = "13px";
+                anc2.style.transform = "translateX(25%)";
+                anc2.style.transition = "0.3s";
+                anc3.style.borderRadius = "50%";
+                anc3.style.width = "30px"
+                anc3.style.padding = "13px";
+                anc3.style.transform = "translateX(25%)";
+                anc3.style.transition = "0.3s";
+                anc4.style.borderRadius = "50%";
+                anc4.style.width = "30px"
+                anc4.style.padding = "13px";
+                anc4.style.transform = "translateX(25%)";
+                anc4.style.transition = "0.3s";                                                
+                logoff.style.width = "30px";
+                logoff_span.style.display = "none";
+                name.style.display = "none";
+                name.style.transition = "0.3s ease";
+                logo.style.transition = "none";
+            }
+        });
+    }
+
+</script>
+
+</body>
+</html>
